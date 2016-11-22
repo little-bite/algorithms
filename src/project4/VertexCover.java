@@ -23,6 +23,14 @@ public class VertexCover {
         solution = new ArrayList<Integer>();
     }
 
+    /**
+     * This method is called recursively
+     * the lemma is that,  there is a minimum vertex cover of k for graph G,
+     * iff G - {u} or G - {v} (or both) has a minimum vertex cover ok k - 1
+     * @param vertices  - the remaining vertices
+     * @param k - the size of vertex cover requested
+     * @return true if current sub-graph has a vertex cover of k
+     */
     private boolean hasMinimumCoverOf(ArrayList<Integer> vertices, int k) {
         int sumOfRow, sumAll = 0;
         // the base case is requesting a vc of 1, in a sub-graph of n - initial_K -1 (in other word, k == 1)
@@ -94,6 +102,13 @@ public class VertexCover {
         return false;
     }
 
+    /***
+     * Get the solution for a bunch of test cases saved in directory /inputs
+     * the number after the underscore in a file name, is the validated size of
+     * minimum vc of the graph described in the file
+     * test cases validated by Ashay Dharwadker
+     * See <a href="http://www.dharwadker.org/vertex_cover">http://www.dharwadker.org/vertex_cover</a>
+     */
     public static void main(String[] args) throws FileNotFoundException {
         File[] files = new File("inputs").listFiles();
         if (files == null){
